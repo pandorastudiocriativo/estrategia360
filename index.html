@@ -1,0 +1,416 @@
+# estrategia360
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Presença Elite · Nexza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C8A96E;
+  --gold2:#E8D5A3;
+  --gold3:#9C7A45;
+  --black:#080808;
+  --dark:#111;
+  --white:#fff;
+  --muted:rgba(255,255,255,0.45);
+  --glow:rgba(200,169,110,0.18);
+  --glow2:rgba(200,169,110,0.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,0.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.12)}
+.nav-logo{font-size:.75rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.nav-btn{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:.55rem 1.4rem;cursor:pointer;transition:opacity .2s}
+.nav-btn:hover{opacity:.85}
+
+/* ── UTILS ── */
+.badge{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,169,110,0.45);padding:.35rem 1rem;border-radius:99px;margin-bottom:1.4rem}
+.glow-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;position:relative;overflow:hidden}
+.hero .glow-orb{width:600px;height:600px;background:radial-gradient(circle,rgba(200,169,110,.13) 0%,transparent 70%);top:10%;left:50%;transform:translateX(-50%)}
+.hero-ghost{position:absolute;font-size:clamp(8rem,22vw,18rem);font-weight:900;color:rgba(255,255,255,.03);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-.03em;user-select:none;pointer-events:none}
+.hero-title{font-size:clamp(3.8rem,10vw,8rem);font-weight:900;line-height:.9;letter-spacing:-.03em;margin-bottom:1rem;position:relative}
+.hero-title .accent{color:var(--gold)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.5);letter-spacing:.12em;margin-bottom:2.5rem}
+.hero-body{max-width:620px;font-size:1.05rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.7);margin:0 auto 3rem}
+.hero-body strong{color:var(--gold2);font-weight:500}
+.cta-primary{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:1rem 2.8rem;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none}
+.cta-primary:hover{opacity:.85}
+.cta-ghost{display:block;margin-top:.9rem;font-size:.6rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;background:none;border:none;text-decoration:underline;text-underline-offset:4px}
+
+/* ── SEÇÕES GENÉRICAS ── */
+.sec{padding:8rem 3rem;max-width:1100px;margin:0 auto;position:relative}
+.sec-full{padding:8rem 3rem;position:relative;overflow:hidden}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.55rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.sec-title{font-size:clamp(2.4rem,6vw,5rem);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:1.8rem}
+.sec-title .accent{color:var(--gold)}
+.sec-title .serif{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic}
+.sec-body{font-size:.87rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:560px}
+
+/* ── MECANISMO ── */
+.mec-box{margin-top:3rem;border:1px solid rgba(200,169,110,.25);padding:2.5rem 3rem;position:relative;overflow:hidden}
+.mec-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.mec-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:300;font-style:italic;line-height:1.65;color:rgba(255,255,255,.85)}
+.mec-label{font-size:.55rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+
+/* ── FASES ── */
+.phases-bg{background:var(--dark);border-top:1px solid rgba(200,169,110,.08);border-bottom:1px solid rgba(200,169,110,.08)}
+.phase{display:grid;grid-template-columns:110px 1fr;gap:3rem;padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.phase:last-child{border-bottom:none}
+.phase-num{font-size:5rem;font-weight:900;color:rgba(200,169,110,.15);line-height:1;letter-spacing:-.04em}
+.phase-badge{font-size:.5rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,169,110,.3);padding:.25rem .7rem;border-radius:99px;display:inline-block;margin-bottom:.6rem}
+.phase-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:.4rem}
+.phase-sub{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.1rem}
+.phase-body{font-size:.82rem;font-weight:300;line-height:1.85;color:var(--muted)}
+.phase-del{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.2rem;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.phase-del::before{content:'';width:20px;height:1px;background:var(--gold)}
+
+/* ── ENTREGÁVEIS ── */
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(200,169,110,.1);margin-top:3rem}
+.del-item{background:var(--black);padding:2rem;transition:background .3s;position:relative;overflow:hidden}
+.del-item:hover{background:#0f0f0f}
+.del-item::after{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width .35s}
+.del-item:hover::after{width:100%}
+.del-num{font-size:2.5rem;font-weight:900;color:rgba(200,169,110,.2);line-height:1;margin-bottom:.8rem;letter-spacing:-.04em}
+.del-title{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;color:rgba(255,255,255,.9)}
+.del-desc{font-size:.85rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.6)}
+
+/* ── FERRAMENTAS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.tool-card{background:#0d0d0d;border:1px solid rgba(200,169,110,.15);padding:2rem;position:relative;overflow:hidden;transition:border-color .3s}
+.tool-card:hover{border-color:rgba(200,169,110,.4)}
+.tool-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(200,169,110,.1) 0%,transparent 70%);pointer-events:none}
+.tool-num{font-size:.55rem;font-weight:700;letter-spacing:.3em;color:var(--gold);margin-bottom:1.2rem}
+.tool-name{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.4rem}
+.tool-product{font-size:1.3rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.9rem}
+.tool-desc{font-size:.75rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.38)}
+
+/* ── BÔNUS ── */
+.bonus-bg{background:var(--dark);border-top:1px solid rgba(200,169,110,.08)}
+.bonus-item{display:grid;grid-template-columns:70px 1fr;gap:2rem;padding:2rem;border:1px solid rgba(255,255,255,.05);margin-bottom:1rem;transition:border-color .3s;position:relative;overflow:hidden}
+.bonus-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .3s}
+.bonus-item:hover{border-color:rgba(200,169,110,.2)}
+.bonus-item:hover::before{background:var(--gold)}
+.bonus-b{font-size:2.2rem;font-weight:900;color:rgba(200,169,110,.2);line-height:1;letter-spacing:-.04em}
+.bonus-title{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;color:rgba(255,255,255,.95)}
+.bonus-obj{font-size:.82rem;font-style:italic;color:rgba(200,169,110,.7);margin-bottom:.6rem}
+.bonus-desc{font-size:.85rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.65)}
+
+/* ── STACK DE VALOR ── */
+.stack{width:100%;border-collapse:collapse;margin-top:2.5rem}
+.stack tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .2s}
+.stack tr:hover{background:rgba(200,169,110,.03)}
+.stack td{padding:.9rem 0;font-size:.8rem;font-weight:300;color:rgba(255,255,255,.42)}
+.stack td:last-child{text-align:right;font-size:1rem;font-weight:700;color:rgba(255,255,255,.55)}
+.stack .total{border-top:1px solid var(--gold)!important}
+.stack .total td{padding:1.3rem 0;font-size:.88rem;font-weight:700;color:var(--white)}
+.stack .total td:last-child{font-size:1.8rem;font-weight:900;color:var(--gold);letter-spacing:-.02em}
+
+/* ── PREÇO ── */
+.preco-bg{background:var(--dark);border-top:1px solid rgba(200,169,110,.1);border-bottom:1px solid rgba(200,169,110,.1);position:relative;overflow:hidden}
+.preco-bg .glow-orb{width:700px;height:700px;background:radial-gradient(circle,rgba(200,169,110,.1) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.preco-inner{max-width:800px;margin:0 auto;text-align:center;position:relative}
+.preco-ghost{position:absolute;font-size:clamp(8rem,25vw,20rem);font-weight:900;color:rgba(255,255,255,.025);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-.04em;user-select:none;pointer-events:none}
+.preco-from{font-size:.58rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.8rem}
+.preco-val{font-size:clamp(4rem,12vw,7rem);font-weight:900;color:var(--gold);line-height:.95;letter-spacing:-.04em}
+.preco-period{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.3);margin:.8rem 0 2rem}
+.preco-compare{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.35);margin-bottom:3rem;line-height:1.7}
+.preco-compare strong{color:rgba(255,255,255,.65)}
+.vagas{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,169,110,.55);margin-top:.9rem}
+
+/* ── COMPARATIVO ── */
+.vs-table{width:100%;border-collapse:collapse;margin-top:3rem}
+.vs-table th{padding:1rem 1.5rem;font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;text-align:left;border-bottom:1px solid rgba(200,169,110,.2)}
+.vs-table th:last-child{color:var(--gold)}
+.vs-table td{padding:1.1rem 1.5rem;font-size:.82rem;font-weight:300;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.38)}
+.vs-table tr:hover td{background:rgba(200,169,110,.02)}
+.vs-table td:last-child{color:rgba(200,169,110,.8);font-weight:500}
+.vs-table td:last-child::before{content:'✦  ';font-size:.55rem}
+
+/* ── GATILHOS ── */
+.gat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.gat-card{background:#0d0d0d;border:1px solid rgba(200,169,110,.12);padding:2.2rem;position:relative;overflow:hidden}
+.gat-card::after{content:'';position:absolute;bottom:0;left:1.5rem;right:1.5rem;height:1px;background:var(--gold);opacity:.4}
+.gat-card::before{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:radial-gradient(circle,rgba(200,169,110,.12) 0%,transparent 70%);pointer-events:none}
+.gat-label{font-size:.55rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.gat-text{font-size:.79rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.5)}
+
+/* ── CTA FINAL ── */
+.final-sec{position:relative;overflow:hidden;text-align:center;padding:10rem 3rem}
+.final-sec .glow-orb{width:800px;height:800px;background:radial-gradient(circle,rgba(200,169,110,.09) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.final-ghost{position:absolute;font-size:clamp(6rem,20vw,16rem);font-weight:900;color:rgba(255,255,255,.025);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;user-select:none;pointer-events:none;letter-spacing:-.04em}
+.final-title{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem;position:relative}
+.final-title .accent{color:var(--gold)}
+.final-title .serif{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic}
+.final-body{font-size:.87rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.42);max-width:480px;margin:0 auto 3.5rem;position:relative}
+
+/* ── FOOTER ── */
+footer{padding:2rem 3rem;border-top:1px solid rgba(200,169,110,.1);display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.f-note{font-size:.6rem;font-weight:300;color:rgba(255,255,255,.15)}
+
+/* ── DIVIDER ── */
+.divider{display:flex;align-items:center;gap:1rem;padding:0 3rem}
+.div-line{flex:1;height:1px;background:rgba(200,169,110,.12)}
+.div-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .sec,.sec-full,.sec-inner{padding:5rem 1.5rem}
+  .del-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr}
+  .gat-grid{grid-template-columns:1fr}
+  .phase{grid-template-columns:70px 1fr;gap:1.5rem}
+  .phase-num{font-size:3rem}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
+  .vs-table th:first-child,.vs-table td:first-child{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nexza</div>
+  <a class="nav-btn" href="https://wa.me/5519982185523">Quero uma vaga</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="glow-orb"></div>
+  <div class="hero-ghost">ELITE</div>
+  <div class="badge">Nexza · Direção Estratégica</div>
+  <h1 class="hero-title">MÉTODO<br><span class="accent">PRESENÇA</span><br>ELITE</h1>
+  <p class="hero-sub">Marketing Médico</p>
+  <p class="hero-body">
+    Transformamos sua presença digital em uma <strong>máquina de autoridade clínica</strong> que atrai pacientes qualificados, elimina a objeção de preço antes da consulta e posiciona você como a <strong>referência do seu nicho</strong>. Sem que você precise escrever uma legenda, gravar um roteiro ou entender de algoritmo.
+  </p>
+  <a class="cta-primary" href="https://wa.me/5519982185523">Quero ser uma referência no digital</a>
+  <button class="cta-ghost" onclick="document.getElementById('metodo').scrollIntoView({behavior:'smooth'})">Como funciona o método?</button>
+</div>
+
+<!-- MECANISMO -->
+<div class="sec" id="metodo">
+  <p class="sec-label">O Mecanismo Único</p>
+  <h2 class="sec-title" style="text-align:center">NÃO ENTREGAMOS<br>POSTS. ENTREGAMOS<br><span class="accent serif" style="font-size:clamp(3rem,8vw,6.5rem)">decisão de compra</span><br><span class="serif" style="font-size:clamp(3rem,8vw,6.5rem)">antecipada.</span></h2>
+  <p class="sec-body" style="margin:0 auto">A maioria das agências entrega peças bonitas. Nós entregamos posicionamento. Antes de criar qualquer conteúdo, mergulhamos fundo na sua prática, analisamos sua concorrência e identificamos seu ângulo de autoridade exclusivo.</p>
+  <div class="mec-box">
+    <p class="mec-label">Contraste Estratégico de Valor</p>
+    <p class="mec-quote">"A única metodologia que analisa o padrão da sua concorrência, identifica o seu ângulo de autoridade exclusivo e constrói uma comunicação que faz o paciente pensar: é esse que eu quero, antes mesmo de perguntar o preço."</p>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div></div>
+
+<!-- FASES -->
+<div class="sec-full phases-bg">
+  <div class="sec-inner sec">
+    <p class="sec-label">A Metodologia</p>
+    <h2 class="sec-title">AS <span class="accent">4 FASES</span><br>DA PRESENÇA ELITE</h2>
+    <div>
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div>
+          <span class="phase-badge">Fase 1 · Mês 1</span>
+          <h3 class="phase-title">DIAGNÓSTICO DE AUTORIDADE</h3>
+          <p class="phase-sub">Onboarding Estratégico</p>
+          <p class="phase-body">Análise do posicionamento atual vs. concorrência direta. Mapeamento do paciente ideal: dores, objeções e critérios de decisão. Identificação do Ângulo de Autoridade Exclusivo, o ponto onde sua especialidade vira vantagem competitiva irresistível. Auditoria de identidade visual.</p>
+          <p class="phase-del">Dossiê de Posicionamento Estratégico</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div>
+          <span class="phase-badge">Fase 2 · Mês 1–2</span>
+          <h3 class="phase-title">CONSTRUÇÃO DE IDENTIDADE</h3>
+          <p class="phase-sub">Base da Autoridade</p>
+          <p class="phase-body">Branding completo: paleta, tipografia, elementos visuais e tom de voz. Templates mestres para feed, Reels e Stories. Bio otimizada para conversão. Guia de Voz e Linguagem, o manual de como sua marca fala.</p>
+          <p class="phase-del">Kit de Identidade Digital Completo</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div>
+          <span class="phase-badge">Fase 3 · Recorrente</span>
+          <h3 class="phase-title">DIREÇÃO EDITORIAL MENSAL</h3>
+          <p class="phase-sub">O Coração do Serviço</p>
+          <p class="phase-body">Plano editorial estratégico com temas, briefings e calendário. Roteiros completos de Reels. Copywriting de legendas. Gestão do designer e editor sob nossa direção. Aprovação via ferramenta com comentários. Agendamento e publicação nos horários estratégicos.</p>
+          <p class="phase-del">Plano Editorial + Produção Gerenciada</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">04</div>
+        <div>
+          <span class="phase-badge">Fase 4 · Recorrente</span>
+          <h3 class="phase-title">CALIBRAÇÃO E EVOLUÇÃO</h3>
+          <p class="phase-sub">Fim de Cada Mês</p>
+          <p class="phase-body">Relatório Executivo com métricas reais de autoridade e conversão, não métricas de vaidade. Reunião estratégica de 30 minutos. Evolução contínua do posicionamento conforme o crescimento da sua autoridade digital.</p>
+          <p class="phase-del">Relatório Executivo + Reunião Estratégica</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENTREGÁVEIS -->
+<div class="sec">
+  <p class="sec-label">Entregáveis Mensais</p>
+  <h2 class="sec-title">O QUE VOCÊ RECEBE<br><span class="accent">TODO MÊS</span></h2>
+  <div class="del-grid">
+    <div class="del-item"><div class="del-num">01</div><div class="del-title">Plano Editorial Estratégico</div><div class="del-desc">Pauta mensal completa com temas, briefings e calendário editorial</div></div>
+    <div class="del-item"><div class="del-num">02</div><div class="del-title">8 a 12 Posts Estratégicos</div><div class="del-desc">Briefing + direção criativa + revisão final de cada peça</div></div>
+    <div class="del-item"><div class="del-num">03</div><div class="del-title">6 Reels Completos</div><div class="del-desc">Roteiro + direção de edição + revisão final</div></div>
+    <div class="del-item"><div class="del-num">04</div><div class="del-title">Pacote de Stories</div><div class="del-desc">Roteiros e ideias semanais para engajamento e conversão</div></div>
+    <div class="del-item"><div class="del-num">05</div><div class="del-title">Copywriting de Legendas</div><div class="del-desc">Texto persuasivo de alta conversão para cada peça</div></div>
+    <div class="del-item"><div class="del-num">06</div><div class="del-title">Gestão de Aprovação</div><div class="del-desc">Revisão de todas as peças com você antes da publicação</div></div>
+    <div class="del-item"><div class="del-num">07</div><div class="del-title">Agendamento e Publicação</div><div class="del-desc">Gestão operacional completa das postagens</div></div>
+    <div class="del-item"><div class="del-num">08</div><div class="del-title">Relatório Executivo</div><div class="del-desc">Dados reais de crescimento de autoridade e agendamentos</div></div>
+    <div class="del-item"><div class="del-num">09</div><div class="del-title">Reunião de Calibração</div><div class="del-desc">30 minutos mensais de alinhamento estratégico</div></div>
+  </div>
+</div>
+
+<div class="divider"><div class="div-line"></div><div class="div-diamond"></div><div class="div-line"></div></div>
+
+<!-- FERRAMENTAS -->
+<div class="sec">
+  <p class="sec-label">Infraestrutura</p>
+  <h2 class="sec-title">FERRAMENTAS<br><span class="accent">DO MÉTODO</span></h2>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <p class="tool-num">01</p>
+      <p class="tool-name">Gestão & CRM</p>
+      <p class="tool-product">Notion</p>
+      <p class="tool-desc">Hub central de operação por cliente. Calendário editorial, aprovação de conteúdo, controle de entregáveis e CRM integrados em um único workspace compartilhado.</p>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">02</p>
+      <p class="tool-name">Relatórios</p>
+      <p class="tool-product">DashGoo</p>
+      <p class="tool-desc">Dashboard automático integrado ao Instagram e Facebook. Relatórios visuais enviáveis ao cliente com dados reais de performance mensal.</p>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">03</p>
+      <p class="tool-name">Agendamento</p>
+      <p class="tool-product">MLabs</p>
+      <p class="tool-desc">Agendamento estratégico de conteúdos em todas as redes sociais nos horários de maior alcance e engajamento por perfil.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BÔNUS -->
+<div class="sec-full bonus-bg">
+  <div class="sec-inner sec">
+    <p class="sec-label">Arsenal Estratégico</p>
+    <h2 class="sec-title">5 BÔNUS QUE<br><span class="accent">ELIMINAM OBJEÇÕES</span></h2>
+    <div style="margin-top:3rem">
+      <div class="bonus-item"><div class="bonus-b">B1</div><div><p class="bonus-title">Dossiê do Concorrente</p><p class="bonus-obj">"Minha especialidade é muito específica, ninguém vai entender meu nicho."</p><p class="bonus-desc">Análise profunda dos 5 principais concorrentes. Mapeamos pontos cegos e o ângulo de diferenciação exclusivo para posicioná-lo acima, não ao lado.</p></div></div>
+      <div class="bonus-item"><div class="bonus-b">B2</div><div><p class="bonus-title">Protocolo de Ativação: Primeiros 30 Dias</p><p class="bonus-obj">"Já joguei dinheiro fora com social media. Tenho medo de não ver resultado."</p><p class="bonus-desc">Ações estratégicas semana a semana para gerar os primeiros sinais de autoridade e contatos qualificados no Direct antes do fim do mês.</p></div></div>
+      <div class="bonus-item"><div class="bonus-b">B3</div><div><p class="bonus-title">Script de Bio e Apresentação Profissional</p><p class="bonus-obj">"Tenho vergonha de precisar de ajuda para algo tão básico."</p><p class="bonus-desc">Bio otimizada em 150 caracteres + roteiro de apresentação para WhatsApp Business e qualquer ponto de contato digital.</p></div></div>
+      <div class="bonus-item"><div class="bonus-b">B4</div><div><p class="bonus-title">Guia Escudo de Honorários</p><p class="bonus-obj">"Não quero continuar perdendo pacientes para concorrentes mais baratos."</p><p class="bonus-desc">Como usar o conteúdo para justificar honorários mais altos e eliminar a objeção de preço antes que o paciente a verbalize.</p></div></div>
+      <div class="bonus-item"><div class="bonus-b">B5</div><div><p class="bonus-title">Biblioteca de Pautas para Saúde</p><p class="bonus-obj">"Não tenho tempo para pensar no que postar."</p><p class="bonus-desc">60 ideias de conteúdo para profissionais de saúde divididas por objetivo: autoridade, humanização, educação e conversão.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALOR -->
+<div class="sec">
+  <p class="sec-label">Ancoragem de Valor</p>
+  <h2 class="sec-title">O QUE VOCÊ ESTÁ<br><span class="accent">RECEBENDO</span></h2>
+  <table class="stack">
+    <tr><td>Diagnóstico Estratégico de Posicionamento</td><td>R$ 1.997</td></tr>
+    <tr><td>Identidade Visual e Branding Profissional</td><td>R$ 2.997</td></tr>
+    <tr><td>Direção Editorial Mensal</td><td>R$ 2.497</td></tr>
+    <tr><td>Gestão de Produção e Aprovação</td><td>R$ 1.497</td></tr>
+    <tr><td>6 Reels: Roteiro e Direção Completa</td><td>R$ 1.797</td></tr>
+    <tr><td>Copywriting de Legendas Otimizadas</td><td>R$ 997</td></tr>
+    <tr><td>Roteiros e Ideias para Stories</td><td>R$ 497</td></tr>
+    <tr><td>Agendamento e Gestão de Publicação</td><td>R$ 497</td></tr>
+    <tr><td>Relatório Executivo Mensal</td><td>R$ 697</td></tr>
+    <tr><td>Reunião Estratégica de Calibração</td><td>R$ 597</td></tr>
+    <tr><td>Bônus 1: Dossiê do Concorrente</td><td>R$ 997</td></tr>
+    <tr><td>Bônus 2: Protocolo Primeiros 30 Dias</td><td>R$ 697</td></tr>
+    <tr><td>Bônus 3: Script de Bio</td><td>R$ 397</td></tr>
+    <tr><td>Bônus 4: Escudo de Honorários</td><td>R$ 497</td></tr>
+    <tr><td>Bônus 5: Biblioteca de Pautas Saúde</td><td>R$ 397</td></tr>
+    <tr class="total"><td>Valor Total Percebido</td><td>R$ 17.455</td></tr>
+  </table>
+</div>
+
+<!-- PREÇO -->
+<div class="sec-full preco-bg" id="preco">
+  <div class="glow-orb"></div>
+  <div class="preco-ghost">R$</div>
+  <div class="preco-inner sec">
+    <div class="badge">Investimento</div>
+    <p class="preco-from">A partir de</p>
+    <p class="preco-val">R$ 3.500</p>
+    <p class="preco-period">por mês · recorrente · serviço mensal contínuo</p>
+    <p class="preco-compare">Você recebe <strong>R$ 17.455 em valor</strong> por uma fração do investimento. Enquanto seu consultório cresce em autoridade todo mês.</p>
+    <a class="cta-primary" href="https://wa.me/5519982185523">Quero garantir minha vaga</a>
+    <p class="vagas">Apenas 6 vagas por mês</p>
+  </div>
+</div>
+
+<!-- COMPARATIVO -->
+<div class="sec">
+  <p class="sec-label">Por que o Método</p>
+  <h2 class="sec-title">AGÊNCIA COMUM<br><span class="accent">VS. PRESENÇA ELITE</span></h2>
+  <table class="vs-table">
+    <thead><tr><th>Agência Comum</th><th>Método Presença Elite</th></tr></thead>
+    <tbody>
+      <tr><td>Faz posts</td><td>Dirige a estratégia do seu conteúdo</td></tr>
+      <tr><td>Entrega peças</td><td>Entrega posicionamento de mercado</td></tr>
+      <tr><td>Reporta curtidas</td><td>Reporta crescimento de autoridade e agendamentos</td></tr>
+      <tr><td>Terceiro fornecedor</td><td>Parceiro estratégico do seu negócio</td></tr>
+      <tr><td>Você gerencia eles</td><td>Eles gerenciam tudo por você</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- GATILHOS -->
+<div class="sec-full" style="background:var(--dark);border-top:1px solid rgba(200,169,110,.08)">
+  <div class="sec-inner sec">
+    <p class="sec-label" style="text-align:center">Por que decidir agora</p>
+    <h2 class="sec-title" style="text-align:center">CADA MÊS SEM<br>AUTORIDADE É UM MÊS<br>DE <span class="accent">PACIENTES PERDIDOS</span></h2>
+    <div class="gat-grid">
+      <div class="gat-card">
+        <p class="gat-label">Vagas Limitadas</p>
+        <p class="gat-text">São abertas no máximo 6 vagas por mês. O nível de atenção estratégica exige imersão real na sua prática. Quando as vagas enchem, a próxima entrada só acontece no mês seguinte.</p>
+      </div>
+      <div class="gat-card">
+        <p class="gat-label">Bônus Exclusivo</p>
+        <p class="gat-text">O Dossiê do Concorrente (R$ 997) está disponível apenas para os 3 primeiros que fecharem neste ciclo. A análise competitiva exige dedicação exclusiva e não é garantida para todos.</p>
+      </div>
+      <div class="gat-card">
+        <p class="gat-label">O Custo de Esperar</p>
+        <p class="gat-text">O onboarding começa na primeira semana útil após a confirmação. Quem entra agora vê resultados em 30 dias. Quem espera mais um mês, perde mais um mês de pacientes que poderiam estar chegando.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-sec" id="final">
+  <div class="glow-orb"></div>
+  <div class="final-ghost">ELITE</div>
+  <h2 class="final-title">SEU CONSULTÓRIO<br>MERECE UMA PRESENÇA<br>DIGITAL À ALTURA DA</h2>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(3.8rem,11vw,8rem);color:var(--gold);line-height:1;letter-spacing:-.01em;margin-bottom:2rem;position:relative">sua expertise.</p>
+  <p class="final-body">Médicos, dentistas e psicólogos de excelência perdem pacientes todos os dias para concorrentes mais baratos. Não porque são piores. Porque não comunicam seu valor. Isso muda agora.</p>
+  <a class="cta-primary" href="https://wa.me/5519982185523" style="font-size:.7rem;padding:1.2rem 3.5rem">Quero garantir minha vaga →</a>
+</div>
+
+<footer>
+  <span class="f-logo">Nexza</span>
+  <span class="f-note">Método Presença Elite · Direção Estratégica de Conteúdo para Profissionais de Saúde</span>
+</footer>
+
+</body>
+</html>
